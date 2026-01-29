@@ -111,26 +111,24 @@ ls ~/.avibe/.skills/
 cat ~/.avibe/.skills/<skill-name>/SKILL.md
 ```
 
-### ⚠️ 技能使用规则 - 先学后做！
+### ⚠️ Skill Usage Rules - Learn Before You Do!
 
-**在执行任何技能相关任务之前，必须：**
+**Before executing any skill-related task, you MUST:**
 
-1. **读 SKILL.md** — 了解核心用法和注意事项
-2. **读 references/** — 查看具体 app 支持情况、错误代码等
-3. **验证命令结果** — 不要假设成功，检查实际输出
+1. **Read SKILL.md** — Understand core usage and caveats
+2. **Read references/** — Check app support details, error codes, etc.
+3. **Verify command results** — Don't assume success, check actual output
 
-**反面教材：**
-- ❌ 直接用假号码发 iMessage，没验证是否成功
-- ❌ 没等 app 加载完就发按键命令
-- ❌ 跳过文档直接写代码
+**Bad examples:**
+- ❌ Sending iMessage with fake number without verifying success
+- ❌ Sending keystrokes before app finishes loading
+- ❌ Skipping docs and writing code directly
 
-**正确做法：**
-- ✅ 先查 `references/app-support.md` 了解 app 的 AppleScript 支持情况
-- ✅ 用系统命令查找真实信息（如 Apple ID: `defaults read MobileMeAccounts`）
-- ✅ 给 app 足够的加载时间（sleep 3-5 秒）
-- ✅ 检查命令返回值，确认真的成功了
-
-Keep local notes (device names, preferences, environment-specific stuff) in `TOOLS.md`.
+**Good examples:**
+- ✅ Check `references/app-support.md` to understand app's AppleScript support
+- ✅ Use system commands to find real info (e.g., Apple ID: `defaults read MobileMeAccounts`)
+- ✅ Give apps enough loading time (sleep 3-5 seconds)
+- ✅ Check command return values to confirm actual success
 
 **📝 Platform Formatting:**
 - **Discord/WhatsApp:** No markdown tables! Use bullet lists instead
