@@ -42,7 +42,7 @@ bunx playwriter@latest session new
 
 ### Chrome Extension Setup
 
-1. Install from Chrome Web Store: search "Playwriter" or visit the extension page
+1. Install from Chrome Web Store: https://chromewebstore.google.com/detail/playwriter-mcp/jfeammnjpkecdekppnclgkkffahnhfhe
 2. **Important:** Click the Playwriter extension icon on any tab you want to control
 3. If you get "extension is not connected" or "no browser tabs have Playwriter enabled", the agent should create a new page with `context.newPage()` instead of asking user
 
@@ -173,8 +173,8 @@ await page.evaluate(() => {
 });
 
 // Method 3: Filter and find specific elements
-const tweet = page.locator('article').filter({ hasText: 'target text' }).first();
-await tweet.locator('button').click();
+const item = page.locator('article').filter({ hasText: 'target text' }).first();
+await item.locator('button').click();
 ```
 
 ### Network interception for API scraping
@@ -198,10 +198,11 @@ playwriter logfile
 playwriter session reset <id>
 ```
 
-## Tips for Twitter/X Automation
+## Web Interaction Tips
 
-- Tweet like buttons use `data-testid="like"` when unliked, changes when liked
-- Use `page.locator('article[data-testid="tweet"]')` to find tweets
-- Check `aria-label` attribute for like status (contains "Liked" if already liked)
-- Scroll with `page.mouse.wheel(0, pixels)` to load more content
-- Use `getCleanHTML` with search to find specific content quickly
+- **Finding interactive elements:** Use `data-testid` attributes when available, fall back to `aria-label` or text content
+- **Toggle states:** Buttons often change attributes when toggled (e.g., `aria-label` changes from "Like" to "Liked")
+- **Scrolling:** Use `page.mouse.wheel(0, pixels)` to load dynamic content
+- **Filtering content:** Use `page.locator().filter({ hasText: 'pattern' })` to find specific items
+- **Handling timeouts:** If `click()` times out, try `click({ force: true })` or use `page.evaluate()` to click directly in the DOM
+- **Content discovery:** Use `getCleanHTML({ locator: page, search: /pattern/i })` to quickly find elements matching a pattern
